@@ -77,7 +77,6 @@ router.post('/upload-post', function (req, res, next) {
 
 router.post('/upload-comment', function (req, res, next) {
   if (req.body) {
-    console.log(req.body);
     const postId = req.body.postId;
     const comment = req.body.comment;
 

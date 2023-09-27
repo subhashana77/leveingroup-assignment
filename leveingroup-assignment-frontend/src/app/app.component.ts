@@ -30,7 +30,6 @@ export class AppComponent implements OnInit{
     });
 
     this.loadAllPost();
-    // this.loadAllComments();
   }
 
   loadAllPost() {
@@ -38,7 +37,6 @@ export class AppComponent implements OnInit{
       next: response => {
         if (response) {
           this.postlist = response;
-          console.log(this.postlist);
         } else {
           console.log("Not any post to display");
         }
@@ -72,19 +70,4 @@ export class AppComponent implements OnInit{
     }
   }
 
-  // loadAllComments() {
-  //   this.apiService.getAllComments().subscribe({
-  //     next: response => {
-  //       if (response) {
-  //         console.log(response);
-  //         this.commentList = response;
-  //       } else {
-  //         console.log("Not any post to display");
-  //       }
-  //     }
-  //   });
-  //   for (let i = 0; i < this.commentList; i++) {
-  //     console.log(this.commentList[i]);
-  //   }
-  // }
 }
