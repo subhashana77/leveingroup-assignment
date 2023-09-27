@@ -20,7 +20,8 @@
     <div class="col-lg-8 col-sm-12 p-0 content-side">
       <div class="container">
 
-        <div class="post" *ngFor="let posts of list; trackBy: trackByFn">
+<!--        <div class="post" *ngFor="let posts of list; trackBy: trackByFn">-->
+        <div class="post" *ngFor="let posts of postlist;">
           <div class="row">
             <div class="col-12">
               <div class="caption">
@@ -67,9 +68,9 @@
 
                 <div class="card" style="width: 18rem;">
                   <div class="card-body">
-                    <h5 class="card-title">Username</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Date and time</h6>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h5 class="card-title">{{posts.username}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{posts.updatedAt}}</h6>
+                    <p class="card-text">{{posts.comment}}</p>
                   </div>
                 </div>
               </div>

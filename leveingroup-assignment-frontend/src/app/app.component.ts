@@ -12,7 +12,8 @@ export class AppComponent implements OnInit{
   randomUsername: string = '';
   caption: string = '';
   imageBase64: string = '';
-  list:any = [];
+  postlist: any = [];
+  commentList: any = [];
   STATIC_IMAGE_URL_PATH: string = 'http://localhost:8000/images/';
   comment: any;
 
@@ -29,15 +30,18 @@ export class AppComponent implements OnInit{
     });
 
     this.loadAllPost();
+    // this.loadAllComments();
   }
 
   loadAllPost() {
+    const commentedPostId:any = [];
+    const commentedComentId:any = [];
+
     this.apiService.getAllPosts().subscribe({
       next: response => {
         if (response) {
-          console.log(response);
-          this.list = response;
-          console.log(this.list);
+          this.postlist = response[0];
+          console.log(this.postlist);
         } else {
           console.log("Not any post to display");
         }
@@ -45,9 +49,9 @@ export class AppComponent implements OnInit{
     });
   }
 
-  trackByFn(index: any, posts: any) {
-    return index;
-  }
+  // trackByFn(index: any, posts: any) {
+  //   return index;
+  // }
 
   onComment(id: any) {
     if (!this.comment) {
@@ -70,4 +74,20 @@ export class AppComponent implements OnInit{
       })
     }
   }
+
+  // loadAllComments() {
+  //   this.apiService.getAllComments().subscribe({
+  //     next: response => {
+  //       if (response) {
+  //         console.log(response);
+  //         this.commentList = response;
+  //       } else {
+  //         console.log("Not any post to display");
+  //       }
+  //     }
+  //   });
+  //   for (let i = 0; i < this.commentList; i++) {
+  //     console.log(this.commentList[i]);
+  //   }
+  // }
 }

@@ -22,7 +22,11 @@ export class ApiService {
   }
 
   getAllPosts(): Observable<any> {
-    return this.httpClient.get(Constants.API_URL + '/posts/all-posts')
+    return this.httpClient.get(Constants.API_URL + '/posts/all-posts');
   }
+
+  // getAllComments(): Observable<any> {
+  //   return this.httpClient.get(Constants.API_URL + '/posts/get-comments');
+  // }
 
 }

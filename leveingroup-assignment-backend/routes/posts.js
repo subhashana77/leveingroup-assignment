@@ -3,6 +3,8 @@ const fs = require('fs');
 const crypto = require('crypto');
 const Post = require('./../models/post');
 const Comment = require('./../models/comment');
+const mysql_package = require('mysql');
+const db = require('../database/sequelise-instance');
 
 const router = express.Router();
 
@@ -11,13 +13,24 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+// router.get('/all-posts', async function (req, res, next) {
+//   if (!req) {
+//     res.send('Post are empty');
+//   } else {
+//     const post = await Post.findAll({});
+//     res.send(post);
+//   }
+// });
 router.get('/all-posts', async function (req, res, next) {
   if (!req) {
-    res.send('Post is invalid');
+    res.send('Post are empty');
   } else {
-    const post = await Post.findAll({});
-    res.send(post);
+    const rows = await db.query('select posts.id, posts.username, posts.caption, posts.image, comments.postId, comments.\`comment\`,  comments.updatedAt from posts, comments where posts.id = comments.postId');
+    res.send(rows);
+    console.log(rows);
   }
+    // const sql = "select posts.id, posts.username, posts.caption, posts.image, comments.id, comments.postId, comments.comment from posts inner join comments on posts.id = comments.postId;";
+
 });
 
 
