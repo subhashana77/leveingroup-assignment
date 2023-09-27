@@ -17,4 +17,8 @@ export class ApiService {
     return this.httpClient.get(Constants.API_URL + '/users/random-username');
   }
 
+  getAllPosts(): Observable<any> {
+    return this.httpClient.get(Constants.API_URL + '/posts/all-posts')
+  }
+
 }

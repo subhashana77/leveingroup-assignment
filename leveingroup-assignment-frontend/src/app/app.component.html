@@ -20,7 +20,7 @@
     <div class="col-lg-8 col-sm-12 p-0 content-side">
       <div class="container">
 
-        <div class="post">
+        <div class="post" *ngFor="let posts of list;">
           <div class="row">
             <div class="col-12">
               <div class="caption">
@@ -40,10 +40,12 @@
                     </svg>
                   </div>
                   <p class="m-1">
-                    User Name
+                    {{posts.username}}
                   </p>
                 </div>
-                <h5 class="text-uppercase mb-0">Caption Here</h5>
+                <h5 class="text-uppercase mb-0">
+                  {{posts.caption}}
+                </h5>
               </div>
             </div>
             <div class="col-lg-6 col-sm-12 pe-1">
@@ -65,8 +67,8 @@
 
                 <div class="card" style="width: 18rem;">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <h5 class="card-title">Username</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Date and time</h6>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   </div>
                 </div>
@@ -74,6 +76,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

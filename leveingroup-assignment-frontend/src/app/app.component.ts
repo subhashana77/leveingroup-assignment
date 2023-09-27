@@ -13,6 +13,7 @@ export class AppComponent implements OnInit{
 
   caption: string = '';
   imageBase64: string = '';
+  list:any = [];
 
   constructor(private apiService: ApiService) {}
 
@@ -25,8 +26,17 @@ export class AppComponent implements OnInit{
         console.log(err);
       }
     });
+
+    this.apiService.getAllPosts().subscribe({
+      next: response => {
+        if (response) {
+          console.log(response);
+          this.list = response;
+          console.log(this.list);
+        } else {
+          console.log("Not any post to display");
+        }
+      }
+    });
   }
-
-
-
 }

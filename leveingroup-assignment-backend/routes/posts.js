@@ -10,6 +10,11 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/all-posts', async function (req, res, next) {
+  const post = await Post.findAll({});
+  res.send(post);
+})
+
 router.post('/upload-post', function (req, res, next) {
 
   if (req.body) {
