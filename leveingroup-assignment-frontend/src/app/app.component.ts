@@ -34,13 +34,10 @@ export class AppComponent implements OnInit{
   }
 
   loadAllPost() {
-    const commentedPostId:any = [];
-    const commentedComentId:any = [];
-
     this.apiService.getAllPosts().subscribe({
       next: response => {
         if (response) {
-          this.postlist = response[0];
+          this.postlist = response;
           console.log(this.postlist);
         } else {
           console.log("Not any post to display");
