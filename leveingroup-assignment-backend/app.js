@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser');
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -13,6 +15,7 @@ const Comment = require('./models/comment');
 // import the routs
 const indexRouter = require('./routes/index');
 const postsRouter = require('./routes/posts');
+const usersRouter = require('./routes/users');
 
 const app = express();
 
@@ -20,15 +23,18 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+app.use(bodyParser.json({ limit: '35mb' }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 // Define routes
 app.use('/', indexRouter);
 app.use('/api/v1/posts', postsRouter);
+app.use('/api/v1/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

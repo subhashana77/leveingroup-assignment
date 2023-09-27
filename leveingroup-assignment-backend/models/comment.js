@@ -14,8 +14,5 @@ module.exports = sequelizeInstance.define('comment', {
     },
     comment: {
         type: DataTypes.STRING
-    },
-    datetime: {
-        type: DataTypes.STRING
     }
 });

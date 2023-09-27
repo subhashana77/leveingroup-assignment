@@ -1,0 +1,18 @@
+<div class="upload-drawer">
+  <div class="container-fluid">
+    <h3 class="m-auto text-light">{{username}}</h3>
+
+    <div class="caption-area m-auto pb-3">
+      <input [(ngModel)]="caption" type="text" class="w-100" name="caption" id="caption" placeholder="Image Caption">
+    </div>
+
+    <div class="image-area m-auto">
+      <img src={{imageSrc}} alt="">
+    </div>
+
+    <div class="button-area m-auto">
+      <input [(ngModel)]="imageName" class="text-light mt-3 mb-3" type="file" name="imageName" accept="image/*" (change)="handleInputChange($event)">
+      <button type="button" class="btn btn-warning w-100" (click)="onUpload()">Upload</button>
+    </div>
+  </div>
+</div>
