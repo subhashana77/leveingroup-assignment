@@ -13,6 +13,10 @@ export class ApiService {
     return this.httpClient.post(Constants.API_URL + '/posts/upload-post', data);
   }
 
+  createComment(data: any): Observable<any> {
+    return this.httpClient.post(Constants.API_URL + '/posts/upload-comment', data);
+  }
+
   getRandomUsername(): Observable<any> {
     return this.httpClient.get(Constants.API_URL + '/users/random-username');
   }

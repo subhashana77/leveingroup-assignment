@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const crypto = require('crypto');
 const Post = require('./../models/post');
+const Comment = require('./../models/comment');
 
 const router = express.Router();
 
@@ -17,7 +18,8 @@ router.get('/all-posts', async function (req, res, next) {
     const post = await Post.findAll({});
     res.send(post);
   }
-})
+});
+
 
 router.post('/upload-post', function (req, res, next) {
 
@@ -39,7 +41,6 @@ router.post('/upload-post', function (req, res, next) {
         msg: 'Username is not found'
       });
     } else {
-
       const uuid = crypto.randomUUID();
       const extension = base64Image.split(';')[0].split('/')[1];
       const fileName = uuid + '.' + extension;
@@ -54,7 +55,33 @@ router.post('/upload-post', function (req, res, next) {
         image: fileName
       });
     }
+  } else {
+    res.send({
+      msg: 'Post not found'
+    });
+  }
+});
 
+router.post('/upload-comment', function (req, res, next) {
+  if (req.body) {
+    console.log(req.body);
+    const postId = req.body.postId;
+    const comment = req.body.comment;
+
+    if (!postId) {
+      res.send({
+        msg: 'Post Id Not Found'
+      });
+    } else if (!comment) {
+      res.send({
+        msg: 'Comment is not found'
+      });
+    } else {
+      Comment.create({
+        postId: postId,
+        comment: comment
+      });
+    }
   } else {
     res.send({
       msg: 'Post not found'

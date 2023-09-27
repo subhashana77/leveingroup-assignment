@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ApiService} from "../services/api.service";
+import Swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-uploader',
@@ -44,16 +46,29 @@ export class UploaderComponent {
 
   onUpload() {
     if (!this.imageSrc) {
-      console.log("Post image is required!");
+      Swal.fire(
+        'Error',
+        'Post image is required!',
+        'error'
+      );
     } else if (!this.caption) {
-      console.log("Post caption is required!!");
+      Swal.fire(
+        'Error',
+        'Post caption is required!',
+        'error'
+      );
     } else {
       this.apiService.createPost({
         username: this.username,
         caption: this.caption,
-        image: this.imageSrc
+        image: this.imageSrc,
       }).subscribe({
         next: response => {
+          Swal.fire(
+            'Uploaded',
+            'Your post has updated successfully!',
+            'success'
+          );
           this.loadAllPost.emit();
           this.caption = "";
           this.imageSrc = "";

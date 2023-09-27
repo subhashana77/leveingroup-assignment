@@ -20,7 +20,7 @@
     <div class="col-lg-8 col-sm-12 p-0 content-side">
       <div class="container">
 
-        <div class="post" *ngFor="let posts of list;">
+        <div class="post" *ngFor="let posts of list; trackBy: trackByFn">
           <div class="row">
             <div class="col-12">
               <div class="caption">
@@ -58,10 +58,10 @@
 
                 <div class="row mb-2">
                   <div class="col-9 pe-0">
-                    <input class="input-comment w-100" type="text" placeholder="Comment...">
+                    <input [(ngModel)]="comment" name="comment" class="input-comment w-100" type="text" placeholder="Comment...">
                   </div>
                   <div class="col-3 ps-0">
-                    <button class="w-100 btn btn-sm btn-info" type="reset">Comment</button>
+                    <button class="w-100 btn btn-sm btn-info" type="reset" (click)="onComment(posts.id)">Comment</button>
                   </div>
                 </div>
 
