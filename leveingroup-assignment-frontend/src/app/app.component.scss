@@ -44,12 +44,38 @@
     padding: 15px;
     .caption {
       padding-left: 3px;
+      .post-user {
+        display: flex;
+        .user-avatar {
+          svg {
+            width: 25px;
+            height: auto;
+          }
+        }
+      }
     }
     .image {
       img {
         width: 100%;
         height: auto;
         padding: 15px 5px;
+      }
+    }
+    .comment {
+      padding-top: 15px;
+      .input-comment {
+        background: antiquewhite;
+        outline: none;
+        box-shadow: none;
+        border: none;
+        padding: 3px 10px 4px;
+      }
+      button {
+        border-radius: 0;
+        color: white;
+      }
+      .card {
+        border-radius: 0;
       }
     }
   }
