@@ -49,7 +49,6 @@ router.post('/upload-post', function (req, res, next) {
         res.send(createdData);
       }).catch(err => {
         res.send({
-
           msg: 'Failed to save post'
         });
       });

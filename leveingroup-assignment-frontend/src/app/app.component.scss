@@ -54,3 +54,18 @@
     }
   }
 }
+
+@media (min-width: 576px){
+  .drawer-side {
+    position: relative!important;
+  }
+  .content-side {
+    position: relative !important;
+    .comment {
+      .card {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
