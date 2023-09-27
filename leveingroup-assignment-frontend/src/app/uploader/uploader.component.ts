@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
 import {ApiService} from "../services/api.service";
-// import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-uploader',
@@ -45,17 +43,9 @@ export class UploaderComponent {
 
   onUpload() {
     if (!this.imageSrc) {
-      Swal.fire(
-        'Fail',
-        'Post image is required!',
-        'error'
-      )
+      console.log("Post image is required!");
     } else if (!this.caption) {
-      Swal.fire(
-        'Fail',
-        'Post caption is required!',
-        'error'
-      )
+      console.log("Post caption is required!!");
     } else {
       this.apiService.createPost({
         username: this.username,
@@ -63,19 +53,13 @@ export class UploaderComponent {
         image: this.imageSrc
       }).subscribe({
         next: response => {
-          Swal.fire(
-            'Post Uploaded',
-            'Post Uploaded Successfully!',
-            'success'
-          )
+          console.log("Uploaded!");
           this.caption = "";
           this.imageSrc = "";
           this.imageName = "";
         },
         error: err => {
-          Swal.showValidationMessage(
-            `Request failed: ${err}`
-          )
+          console.log(err);
         }
       });
     }

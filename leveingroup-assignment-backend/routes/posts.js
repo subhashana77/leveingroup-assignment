@@ -11,8 +11,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/all-posts', async function (req, res, next) {
-  const post = await Post.findAll({});
-  res.send(post);
+  if (!req) {
+    res.send('Post is invalid');
+  } else {
+    const post = await Post.findAll({});
+    res.send(post);
+  }
 })
 
 router.post('/upload-post', function (req, res, next) {
@@ -44,18 +48,10 @@ router.post('/upload-post', function (req, res, next) {
           msg: 'File is created'
         });
       });
-
       Post.create({
         username: username,
         caption: caption,
         image: fileName
-      }).then(value => {
-        const createdData = value?.dataValues;
-        res.send(createdData);
-      }).catch(err => {
-        res.send({
-          msg: 'Failed to save post'
-        });
       });
     }
 

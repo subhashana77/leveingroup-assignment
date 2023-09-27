@@ -9,11 +9,10 @@ import {ApiService} from "./services/api.service";
 export class AppComponent implements OnInit{
 
   randomUsername: string = '';
-  name = 'Angular 5';
-
   caption: string = '';
   imageBase64: string = '';
   list:any = [];
+  STATIC_IMAGE_URL_PATH: string = 'http://localhost:8000/images/';
 
   constructor(private apiService: ApiService) {}
 
