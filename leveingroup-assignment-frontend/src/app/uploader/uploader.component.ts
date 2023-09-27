@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {ApiService} from "../services/api.service";
 
 @Component({
@@ -10,6 +10,7 @@ export class UploaderComponent {
   constructor(private apiService: ApiService) {}
 
   @Input() username = '';
+  @Output("loadAllPost") loadAllPost: EventEmitter<any> = new EventEmitter<any>();
 
   loaded: boolean = false;
   imageSrc: string = '';
@@ -53,7 +54,7 @@ export class UploaderComponent {
         image: this.imageSrc
       }).subscribe({
         next: response => {
-          console.log("Uploaded!");
+          this.loadAllPost.emit();
           this.caption = "";
           this.imageSrc = "";
           this.imageName = "";

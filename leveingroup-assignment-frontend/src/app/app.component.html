@@ -15,7 +15,7 @@
 
   <div class="row m-0">
     <div class="col-lg-4 col-sm-12 p-0 drawer-side">
-      <app-uploader [username]="randomUsername"></app-uploader>
+      <app-uploader [username]="randomUsername" (loadAllPost)="loadAllPost()"></app-uploader>
     </div>
     <div class="col-lg-8 col-sm-12 p-0 content-side">
       <div class="container">

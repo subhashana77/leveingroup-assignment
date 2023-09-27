@@ -26,6 +26,10 @@ export class AppComponent implements OnInit{
       }
     });
 
+    this.loadAllPost();
+  }
+
+  loadAllPost() {
     this.apiService.getAllPosts().subscribe({
       next: response => {
         if (response) {
